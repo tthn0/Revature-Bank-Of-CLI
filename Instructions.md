@@ -1,0 +1,68 @@
+# Project Specification: Bank of CLI
+
+## 1. Overview
+
+Welcome to the **Bank of CLI** project! In this project, you will build a functional banking application that runs entirely within the terminal. Your goal is to move from a simple user interface down to a persistent database, applying what you've learned about Java, SQL, and Agile development.
+
+## 2. Your Mission (MVP Features)
+
+You are responsible for delivering a "Core Ledger" that supports the following operations:
+
+- **Secure Access:** Users must be able to register and log in using a unique `Account ID` and `PIN`.
+- **Balance Management:** Users can check their current account balance at any time.
+- **The Transaction Engine:**
+  - `Deposit`: Add funds to an account.
+  - `Withdraw`: Remove funds (the system must prevent overdrawing!).
+  - `Transfer`: Move money securely between two different accounts.
+- **Audit Trail:** Users can view their recent transaction history.
+- **System Logging:** The application must maintain a log file to track activity. You are required to use:
+  - `INFO`: To record successful actions (e.g., "User successfully logged in").
+  - `ERROR`: To record failures or security risks (e.g., "Incorrect PIN entered" or "Database connection lost").
+
+## 3. Architecture & Technical Requirements
+
+To build a scalable and maintainable application, you must follow a **Layered Architecture**. Do not skip layers; each has a specific job:
+
+1.  **API Layer (The Interface):** This is what the user sees. It handles all terminal inputs, menu navigation, and printing messages. This layer _only_ talks to the Service Layer.
+2.  **Business Layer (The Brains):** This is where the banking rules live (e.g., "Can this user afford this withdrawal?"). It receives calls from the API and calls the Repository Layer
+3.  **Repository Layer (The Vault):** This layer handles all communication with the SQL database. It converts SQL rows into Java objects and vice versa. It _only_ receives calls from the Business Layer.
+
+### The Tech Stack
+
+- **Language:** Java
+- **Build Tool:** Maven
+- **Database:** Postgres
+- **Testing:** JUnit 5
+- **Version Control:** Git & GitHub
+
+## 4. Quality Standards: The "2-Test Rule"
+
+We don't just want code that works; we want code that is _proven_ to work. For **every** single method you write in the Service and Repository layers, you must provide at least two JUnit 5 tests:
+
+1.  **The Positive Test:** Prove the method works when everything goes right (e.g., a successful deposit).
+2.  **The Negative Test:** Prove the method handles errors correctly (e.g., attempting to withdraw more money than is available should be rejected gracefully).
+
+## 5. Professional Implementation Guidelines
+
+As you build, keep these "Gold Standards" in mind:
+
+- **Atomicity (All or Nothing):** When performing a `Transfer`, the deduction from one account and the addition to another must happen as one single unit. If one part fails, the whole operation must fail so that money never "vanishes."
+- **Smart Error Handling:**
+  - **User-Friendly Messages:** If a user makes a mistake (like an incorrect PIN), show them a clear, helpful message.
+  - **Security First:** If the database crashes, do **not** show the user a scary technical stack trace. Instead, log the technical error and show the user a polite "Service Unavailable" type message.
+
+**Good luck, and happy coding!**
+
+## Grading Rubric
+
+| Rubric Item                            | What to Look For                                                                                                                                                     |   Weight |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------: |
+| **Multilayered Application**           | Application demonstrates a clear multilayer architecture (e.g., presentation/UI, business/service layer, data/access layer) with appropriate separation of concerns. |  **15%** |
+| **Account Management Feature**         | Users can create and sign into bank accounts with their ID and pin.                                                                                                  |  **10%** |
+| **Check Account Balance**              | Users can view the current balance of their account(s), with accurate values displayed.                                                                              |  **10%** |
+| **Withdraw & Deposit Funds**           | Users can successfully deposit and withdraw funds, with account balances updated appropriately.                                                                      |  **15%** |
+| **Transfer Funds Between Accounts**    | Users can transfer funds from one account to another, with appropriate balance updates and validation.                                                               |  **15%** |
+| **View Transaction History**           | Users can view a history of transactions.                                                                                                                            |  **10%** |
+| **Logging: Info & Error Messages**     | Demonstrates at least one **INFO** message and one **ERROR** message written to a log. Messages should be meaningful and demonstrate appropriate logging practices.  |  **10%** |
+| **Testing: Positive & Negative Tests** | Demonstrates at least one **positive test** and one **negative test**, and both tests must pass. Tests should meaningfully validate application behavior.            |  **15%** |
+| **Total**                              |                                                                                                                                                                      | **100%** |
