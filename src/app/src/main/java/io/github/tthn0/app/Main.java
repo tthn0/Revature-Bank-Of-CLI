@@ -1,6 +1,7 @@
 package io.github.tthn0.app;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -30,7 +31,7 @@ public class Main {
             while ((line = reader.readLine()) != null)
                 System.out.println(line);
         } catch (IOException e) {
-            System.err.println("Can't fine file: " + e.getMessage());
+            System.err.println("Can't find file: " + new File(filePath).getAbsolutePath());
         }
     }
 }

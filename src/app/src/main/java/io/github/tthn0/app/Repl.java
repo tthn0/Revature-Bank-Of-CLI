@@ -191,8 +191,10 @@ public class Repl {
     private void handleDeposit(Account account) throws LedgerException {
         long amountInCents = promptForAmount("Amount to deposit: ");
         String memo = promptForMemo();
-
         String transactionId = ls.deposit(account, amountInCents, memo);
+
+        printLoadingIndicator();
+
         System.out.println("\nDeposit successful! Your transaction ID is:");
         System.out.println(transactionId);
     }
@@ -200,8 +202,10 @@ public class Repl {
     private void handleWithdraw(Account account) throws LedgerException {
         long amountInCents = promptForAmount("Amount to withdraw: ");
         String memo = promptForMemo();
-
         String transactionId = ls.withdraw(account, amountInCents, memo);
+
+        printLoadingIndicator();
+
         System.out.println("\nWithdrawal successful! Your transaction ID is:");
         System.out.println(transactionId);
     }
@@ -221,8 +225,10 @@ public class Repl {
 
         long amountInCents = promptForAmount("Amount to transfer: ");
         String memo = promptForMemo();
-
         String transactionId = ls.transfer(fromAccount, toAccount, amountInCents, memo);
+
+        printLoadingIndicator();
+
         System.out.println("\nTransfer successful! Your transaction ID is:");
         System.out.println(transactionId);
     }
@@ -256,5 +262,17 @@ public class Repl {
         });
 
         System.out.println(at.render());
+    }
+
+    private void printLoadingIndicator() {
+        System.out.println();
+        try {
+            for (int i = 0; i < 3; i++) {
+                System.out.print(".");
+                Thread.sleep(500);
+            }
+        } catch (InterruptedException e) {
+        }
+        System.out.println();
     }
 }

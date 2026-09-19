@@ -2,26 +2,37 @@
 
 ## TODO
 
-- Draw ERD.
 - Logging (Don't need to put too much effort into logging).
-- Testing (Single positive and single negative test in project).
-- Setup instructions
+- Presentation Slide Deck
+
+## Presentation Guidelines
+
+- Stay focused on requirements
+- Talk about Multi-Layered Architecture
+- Discuss how you use OOP (APIE) to support MLA
+- Talk about different kinds of technologies and how you implemented them
+- Would be helpful to include ERD and participation/cardinality.
+- No need to include screenshots of output; opt for live demo
+- ≤ 5 minutes
 
 ```bash
 cd /Users/thomas/Local/Revature/projects/p0/src/app ; /usr/bin/env /Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home/bin/java @/var/folders/ln/__v62bp94y3ctp_v34tw9s700000gn/T/cp_28x3g6vwcqhbl933sk1h2h3xx.argfile io.github.tthn0.app.Main
 ```
 
 ```
-$$$$$$$\                      $$\                        $$$$$$\         $$$$$$\  $$\       $$$$$$\
-$$  __$$\                     $$ |                      $$  __$$\       $$  __$$\ $$ |      \_$$  _|
-$$ |  $$ | $$$$$$\  $$$$$$$\  $$ |  $$\        $$$$$$\  $$ /  \__|      $$ /  \__|$$ |        $$ |
-$$$$$$$\ | \____$$\ $$  __$$\ $$ | $$  |      $$  __$$\ $$$$\           $$ |      $$ |        $$ |
-$$  __$$\  $$$$$$$ |$$ |  $$ |$$$$$$  /       $$ /  $$ |$$  _|          $$ |      $$ |        $$ |
-$$ |  $$ |$$  __$$ |$$ |  $$ |$$  _$$<        $$ |  $$ |$$ |            $$ |  $$\ $$ |        $$ |
-$$$$$$$  |\$$$$$$$ |$$ |  $$ |$$ | \$$\       \$$$$$$  |$$ |            \$$$$$$  |$$$$$$$$\ $$$$$$\
-\_______/  \_______|\__|  \__|\__|  \__|       \______/ \__|             \______/ \________|\______|
+$$$$$$$\                      $$\                      $$$$$$\       $$$$$$\  $$\       $$$$$$\
+$$  __$$\                     $$ |                    $$  __$$\     $$  __$$\ $$ |      \_$$  _|
+$$ |  $$ | $$$$$$\  $$$$$$$\  $$ |  $$\      $$$$$$\  $$ /  \__|    $$ /  \__|$$ |        $$ |
+$$$$$$$\ | \____$$\ $$  __$$\ $$ | $$  |    $$  __$$\ $$$$\         $$ |      $$ |        $$ |
+$$  __$$\  $$$$$$$ |$$ |  $$ |$$$$$$  /     $$ /  $$ |$$  _|        $$ |      $$ |        $$ |
+$$ |  $$ |$$  __$$ |$$ |  $$ |$$  _$$<      $$ |  $$ |$$ |          $$ |  $$\ $$ |        $$ |
+$$$$$$$  |\$$$$$$$ |$$ |  $$ |$$ | \$$\     \$$$$$$  |$$ |          \$$$$$$  |$$$$$$$$\ $$$$$$\
+\_______/  \_______|\__|  \__|\__|  \__|     \______/ \__|           \______/ \________|\______|
 ```
 
+## Screenshots
+
+![ERD](images/erd.svg)
 ![Demo](images/demo.jpg)
 
 ## About
@@ -47,7 +58,13 @@ $$$$$$$  |\$$$$$$$ |$$ |  $$ |$$ | \$$\       \$$$$$$  |$$ |            \$$$$$$ 
 ### 1. Start the database
 
 ```bash
-docker run -d --name bank-of-cli -p 5432:5432 -e POSTGRES_USER=username -e POSTGRES_PASSWORD=password -e POSTGRES_DB=bank_of_cli postgres:17
+docker run -d \
+  --name bank-of-cli \
+  -p 5432:5432 \
+  -e POSTGRES_USER=username \
+  -e POSTGRES_PASSWORD=password \
+  -e POSTGRES_DB=bank_of_cli \
+  postgres:17
 ```
 
 ### 2. Initialize the database
@@ -75,6 +92,7 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
     - (4) Check Balance
     - (5) View Transaction History
     - (2) Withdraw Large Amount
+    - (1) Deposit $abc.123
     - (1) Deposit $1000
     - (2) Withdraw $200
     - (4) Check Balance ($800)
@@ -92,6 +110,10 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
   - Login To First Account
     - (5) View Transaction History
     - (4) Check Balance
+- Code Architecture
+  - Multi-Layered
+  - Logging
+  - Solid Test Cases
 - Database
   - ERD
   - Double-Entry Ledger
