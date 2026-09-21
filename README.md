@@ -2,7 +2,7 @@
 
 ## TODO
 
-- Logging (Don't need to put too much effort into logging).
+- Logging
 - Presentation Slide Deck
 
 ## Presentation Guidelines
@@ -20,14 +20,14 @@ cd /Users/thomas/Local/Revature/projects/p0/src/app ; /usr/bin/env /Library/Java
 ```
 
 ```
-$$$$$$$\                      $$\                      $$$$$$\       $$$$$$\  $$\       $$$$$$\
-$$  __$$\                     $$ |                    $$  __$$\     $$  __$$\ $$ |      \_$$  _|
-$$ |  $$ | $$$$$$\  $$$$$$$\  $$ |  $$\      $$$$$$\  $$ /  \__|    $$ /  \__|$$ |        $$ |
-$$$$$$$\ | \____$$\ $$  __$$\ $$ | $$  |    $$  __$$\ $$$$\         $$ |      $$ |        $$ |
-$$  __$$\  $$$$$$$ |$$ |  $$ |$$$$$$  /     $$ /  $$ |$$  _|        $$ |      $$ |        $$ |
-$$ |  $$ |$$  __$$ |$$ |  $$ |$$  _$$<      $$ |  $$ |$$ |          $$ |  $$\ $$ |        $$ |
-$$$$$$$  |\$$$$$$$ |$$ |  $$ |$$ | \$$\     \$$$$$$  |$$ |          \$$$$$$  |$$$$$$$$\ $$$$$$\
-\_______/  \_______|\__|  \__|\__|  \__|     \______/ \__|           \______/ \________|\______|
+$$$$$$$\                      $$\                     $$$$$$\      $$$$$$\  $$\       $$$$$$\
+$$  __$$\                     $$ |                   $$  __$$\    $$  __$$\ $$ |      \_$$  _|
+$$ |  $$ | $$$$$$\  $$$$$$$\  $$ |  $$\     $$$$$$\  $$ /  \__|   $$ /  \__|$$ |        $$ |
+$$$$$$$\ | \____$$\ $$  __$$\ $$ | $$  |   $$  __$$\ $$$$\        $$ |      $$ |        $$ |
+$$  __$$\  $$$$$$$ |$$ |  $$ |$$$$$$  /    $$ /  $$ |$$  _|       $$ |      $$ |        $$ |
+$$ |  $$ |$$  __$$ |$$ |  $$ |$$  _$$<     $$ |  $$ |$$ |         $$ |  $$\ $$ |        $$ |
+$$$$$$$  |\$$$$$$$ |$$ |  $$ |$$ | \$$\    \$$$$$$  |$$ |         \$$$$$$  |$$$$$$$$\ $$$$$$\
+\_______/  \_______|\__|  \__|\__|  \__|    \______/ \__|          \______/ \________|\______|
 ```
 
 ## Screenshots
@@ -80,10 +80,16 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
 
 ## Demo Steps
 
+- STOP DATABASE
 - App
   - Invalid Option
+    - Show friendly error message
   - Create Account
-    - PIN Validation
+    - Show friendly error message (database down, doesn't show full stack trace)
+    - Show error log
+    - Start database
+  - Create Account
+    - PIN Validation (> 4 chars)
   - Login
     - With Wrong Password
     - With Correct Password

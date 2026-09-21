@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.asciitable.CWC_LongestLine;
 import io.github.tthn0.domain.Account;
@@ -17,6 +20,7 @@ public class Repl {
     private final AccountService as;
     private final LedgerService ls;
     private final Scanner scan = new Scanner(System.in);
+    private static final Logger logger = LoggerFactory.getLogger(Repl.class);
 
     private static final String RESET = "\u001B[0m";
     private static final String RED = "\u001B[31m";
@@ -71,16 +75,17 @@ public class Repl {
         System.out.println();
 
         Command command = commands.get(option);
-        if (command != null) {
+        if (command == null) {
+            printError("Invalid option.");
+        } else {
             try {
                 command.action().execute();
             } catch (LedgerException e) {
                 printError("\n" + e.getMessage());
             } catch (Exception e) {
                 printError("\nAn unexpected error occurred: " + e.getMessage());
+                logger.error("{}", e.getMessage());
             }
-        } else {
-            printError("Invalid option.");
         }
 
         return option.equals("0");

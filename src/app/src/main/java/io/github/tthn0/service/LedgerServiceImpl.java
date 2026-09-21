@@ -2,6 +2,9 @@ package io.github.tthn0.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.github.tthn0.domain.Account;
 import io.github.tthn0.domain.Audit;
 import io.github.tthn0.persistence.AccountDao;
@@ -10,6 +13,7 @@ import io.github.tthn0.persistence.LedgerDao;
 public class LedgerServiceImpl implements LedgerService {
     private final AccountDao accountDao;
     private final LedgerDao ledgerDao;
+    private static final Logger logger = LoggerFactory.getLogger(LedgerServiceImpl.class);
 
     public LedgerServiceImpl(AccountDao accountDao, LedgerDao ledgerDao) {
         this.accountDao = accountDao;
@@ -18,7 +22,10 @@ public class LedgerServiceImpl implements LedgerService {
 
     @Override
     public List<Audit> getTransactionHistory(Account account) {
-        return ledgerDao.selectAuditsFromAccountId(account.getAccountId());
+        List<Audit> transactionHistory = ledgerDao.selectAuditsFromAccountId(account.getAccountId());
+
+        logger.info("\"{} viewed their transaction history.\"", account.getAccountId());
+        return transactionHistory;
     }
 
     @Override
@@ -28,6 +35,12 @@ public class LedgerServiceImpl implements LedgerService {
 
         String transactionId = ledgerDao.callDeposit(account.getAccountId(), amountInCents, memo);
         account.updateBalance(amountInCents);
+
+        logger.info(
+                "\"(Transaction ID: {}) {} deposited {}¢.\"",
+                transactionId,
+                account.getAccountId(),
+                amountInCents);
         return transactionId;
     }
 
@@ -41,6 +54,12 @@ public class LedgerServiceImpl implements LedgerService {
 
         String transactionId = ledgerDao.callWithdraw(account.getAccountId(), amountInCents, memo);
         account.updateBalance(-amountInCents);
+
+        logger.info(
+                "\"(Transaction ID: {}) {} withdrew {}¢.\"",
+                transactionId,
+                account.getAccountId(),
+                amountInCents);
         return transactionId;
     }
 
@@ -57,6 +76,13 @@ public class LedgerServiceImpl implements LedgerService {
         String transactionId = ledgerDao.callTransfer(from.getAccountId(), to.getAccountId(), amountInCents, memo);
         from.updateBalance(-amountInCents);
         to.updateBalance(+amountInCents);
+
+        logger.info(
+                "\"(Transaction ID: {}) {} transferred {}¢ to {}.\"",
+                transactionId,
+                from.getAccountId(),
+                amountInCents,
+                to.getAccountId());
         return transactionId;
     }
 }

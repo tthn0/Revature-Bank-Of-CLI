@@ -31,7 +31,7 @@ public class ConnectionFactory {
                     props.getProperty("DB_USER"),
                     props.getProperty("DB_PASSWORD"));
         } catch (SQLException e) {
-            throw new IllegalStateException("Could not connect to the database", e);
+            throw new IllegalStateException("Could not connect to the database.", e);
         }
     }
 }
