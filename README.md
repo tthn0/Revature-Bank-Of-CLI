@@ -1,33 +1,14 @@
 # Bank of CLI Project
 
-## TODO
-
-- Logging
-- Presentation Slide Deck
-
-## Presentation Guidelines
-
-- Stay focused on requirements
-- Talk about Multi-Layered Architecture
-- Discuss how you use OOP (APIE) to support MLA
-- Talk about different kinds of technologies and how you implemented them
-- Would be helpful to include ERD and participation/cardinality.
-- No need to include screenshots of output; opt for live demo
-- ≤ 5 minutes
-
-```bash
-cd /Users/thomas/Local/Revature/projects/p0/src/app ; /usr/bin/env /Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home/bin/java @/var/folders/ln/__v62bp94y3ctp_v34tw9s700000gn/T/cp_28x3g6vwcqhbl933sk1h2h3xx.argfile io.github.tthn0.app.Main
 ```
-
-```
-$$$$$$$\                      $$\                     $$$$$$\      $$$$$$\  $$\       $$$$$$\
-$$  __$$\                     $$ |                   $$  __$$\    $$  __$$\ $$ |      \_$$  _|
-$$ |  $$ | $$$$$$\  $$$$$$$\  $$ |  $$\     $$$$$$\  $$ /  \__|   $$ /  \__|$$ |        $$ |
-$$$$$$$\ | \____$$\ $$  __$$\ $$ | $$  |   $$  __$$\ $$$$\        $$ |      $$ |        $$ |
-$$  __$$\  $$$$$$$ |$$ |  $$ |$$$$$$  /    $$ /  $$ |$$  _|       $$ |      $$ |        $$ |
-$$ |  $$ |$$  __$$ |$$ |  $$ |$$  _$$<     $$ |  $$ |$$ |         $$ |  $$\ $$ |        $$ |
-$$$$$$$  |\$$$$$$$ |$$ |  $$ |$$ | \$$\    \$$$$$$  |$$ |         \$$$$$$  |$$$$$$$$\ $$$$$$\
-\_______/  \_______|\__|  \__|\__|  \__|    \______/ \__|          \______/ \________|\______|
+$$$$$$$\                      $$\                    $$$$$$\     $$$$$$\  $$\       $$$$$$\
+$$  __$$\                     $$ |                  $$  __$$\   $$  __$$\ $$ |      \_$$  _|
+$$ |  $$ | $$$$$$\  $$$$$$$\  $$ |  $$\    $$$$$$\  $$ /  \__|  $$ /  \__|$$ |        $$ |
+$$$$$$$\ | \____$$\ $$  __$$\ $$ | $$  |  $$  __$$\ $$$$\       $$ |      $$ |        $$ |
+$$  __$$\  $$$$$$$ |$$ |  $$ |$$$$$$  /   $$ /  $$ |$$  _|      $$ |      $$ |        $$ |
+$$ |  $$ |$$  __$$ |$$ |  $$ |$$  _$$<    $$ |  $$ |$$ |        $$ |  $$\ $$ |        $$ |
+$$$$$$$  |\$$$$$$$ |$$ |  $$ |$$ | \$$\   \$$$$$$  |$$ |        \$$$$$$  |$$$$$$$$\ $$$$$$\
+\_______/  \_______|\__|  \__|\__|  \__|   \______/ \__|         \______/ \________|\______|
 ```
 
 ## Screenshots
@@ -78,16 +59,16 @@ cd src/app
 mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
 ```
 
-## Demo Steps
+## Presentation Demo Outline
 
-- STOP DATABASE
+- STOP DOCKER CONTAINER
 - App
   - Invalid Option
     - Show friendly error message
   - Create Account
     - Show friendly error message (database down, doesn't show full stack trace)
     - Show error log
-    - Start database
+    - Start Docker Container
   - Create Account
     - PIN Validation (> 4 chars)
   - Login
@@ -116,9 +97,10 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
   - Login To First Account
     - (5) View Transaction History
     - (4) Check Balance
+    - (0) Log Out
+  - Show Application Logs
 - Code Architecture
   - Multi-Layered
-  - Logging
   - Solid Test Cases
 - Database
   - ERD
@@ -131,3 +113,9 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
   - UDF
     - Transfer
     - Deposit/Withdraw
+
+<!--
+```bash
+cd /Users/thomas/Local/Revature/projects/p0/src/app ; /usr/bin/env /Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home/bin/java @/var/folders/ln/__v62bp94y3ctp_v34tw9s700000gn/T/cp_28x3g6vwcqhbl933sk1h2h3xx.argfile io.github.tthn0.app.Main
+```
+-->
