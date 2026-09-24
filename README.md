@@ -65,9 +65,9 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
 ### Before Starting
 
 - Turn on Do Not Disturb.
-- Open Google Chrome.
-  - Open slideshow in an incognito tab.
-  - Move to virtual window `1`.
+- Open Docker
+  - Move to virtual window `D`.
+  - Make sure `bank-of-cli` is **running**.
 - Open VS Code.
   - Make sure project is open.
   - Open up terminal in full screen.
@@ -75,16 +75,18 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
     - Make sure it is cleared out.
   - Open up `init.sql`.
     - Re-run the entire script.
-  - Make sure startup command is ready (and copied to clipboard).
+    - Keep the tab open.
+    - **Stop** `bank-of-cli` in Docker.
+  - Get application startup command is ready (and copied to clipboard).
   - Toggle minimal user settings.
   - Move to virtual window `2`.
-- Open Docker
-  - Move to virtual window `D`.
-  - Make sure `bank-of-cli` is **stopped**.
 - Open Zoom
   - Make sure camera is on.
   - Move to virtual window `Z`.
 - Close all other apps.
+- Open Google Chrome.
+  - Move to virtual window `1`.
+  - Full screen presentation.
 
 ### Presentation Script
 
@@ -135,8 +137,9 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
   - (4) Check balance ($79.75).
   - (5) View transaction history.
 - Back to first account
-  - (5) View transaction history
-  - (4) Check balance
+  - Check balance ($420.25).
+  - (5) View transaction history.
+  - Notice how it appears as a credit on this side but as a debit on the other side.
 - That's about it for the demo
 - Let's also check the application logs again
 

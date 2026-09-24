@@ -51,7 +51,15 @@ public class Account {
         return this.firstName;
     }
 
+    public String getFullName() {
+        return String.format("%s %s", this.firstName, this.lastName);
+    }
+
     public void updateBalance(long amountInCents) {
         this.balanceInCents += amountInCents;
+    }
+
+    public void setBalance(long amountInCents) {
+        this.balanceInCents = amountInCents;
     }
 }

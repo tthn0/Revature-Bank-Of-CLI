@@ -239,7 +239,23 @@ public class Repl {
     }
 
     private void handleCheckBalance(Account account) {
-        System.out.printf("Your balance is: %s %n", account.getFormattedBalance());
+        Account freshAccount = as.findAccount(account.getAccountId());
+        account.setBalance(freshAccount.getBalanceInCents());
+
+        AsciiTable at = new AsciiTable();
+        at.getRenderer().setCWC(new CWC_LongestLine());
+
+        at.addRule();
+        at.addRow("Account Holder", "Account ID", "Balance");
+        at.addRule();
+
+        at.addRow(
+            account.getFullName(),
+            account.getAccountId(),
+            account.getFormattedBalance());
+        at.addRule();
+
+        System.out.println(at.render());
     }
 
     private void handleViewHistory(Account account) {
