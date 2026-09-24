@@ -92,7 +92,7 @@ SELECT
 FROM ledger_entries l
 JOIN transactions t ON l.transaction_id = t.transaction_id
 JOIN accounts a ON a.account_id = l.account_id
-WHERE a.account_type != 'SYSTEM'
+-- WHERE a.account_type != 'SYSTEM'
 ORDER BY t.created_at DESC;
 
 CREATE OR REPLACE FUNCTION transfer(
@@ -209,7 +209,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-------------------------------------------------------------
+---------------------------------------------------------------
 
 INSERT INTO accounts (account_type, first_name, last_name, pin) 
 VALUES
@@ -237,5 +237,6 @@ SELECT withdraw(
     p_description => 'ATM cash withdrawal'
 );
 
-SELECT SUM(amount) FROM ledger_entries;
+SELECT * FROM ledger_entries;
 SELECT * FROM audits;
+SELECT SUM(amount) FROM audits;
