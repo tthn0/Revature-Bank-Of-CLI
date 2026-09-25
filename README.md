@@ -62,6 +62,9 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
 
 ## Presentation Outline
 
+<details>
+  <summary>Click here to view my presentation outline</summary>
+  
 ### Before Starting
 
 - Turn on Do Not Disturb.
@@ -190,6 +193,8 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
   - And maintain a strict separation of concerns.
 - Let's see how object-oriented programming can support our multi-layered architecture:
   - ...
+
+  </details>
 
 <!--
 ```bash
