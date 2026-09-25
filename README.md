@@ -140,8 +140,10 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
   - Check balance ($420.25).
   - (5) View transaction history.
   - Notice how it appears as a credit on this side but as a debit on the other side.
-- That's about it for the demo
-- Let's also check the application logs again
+- That's about it for the demo.
+- Let's also check the application logs again:
+  - Notice how there are different log levels.
+  - And here is a list of all the important events that happened.
 
 #### Post-Demo
 
@@ -181,6 +183,7 @@ mvn compile exec:java -Dexec.mainClass="io.github.tthn0.app.Main"
     - To balance deposits and withdrawals.
     - And for transfers, the system clearing account isn't involved,
     - Since there is already a sender and receiver to keep things balanced.
+    - If we try to get the sum of all amounts, it should always be zero.
 - MLA:
   - This architecture keeps our code clean, concise, and logically separated.
   - So classes can follow the single responsibility principle.
